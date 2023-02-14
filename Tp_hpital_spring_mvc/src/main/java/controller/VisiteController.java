@@ -54,13 +54,13 @@ public class VisiteController {
 		model.addAttribute("patients", patientRepo.findAll());
 		model.addAttribute("medecins", medecinRepo.findAll());
 
-		return "filiere/form";
+		return "visite/form";
 	}
 
 	
 	@GetMapping("/form")
 	public String edit(@RequestParam Integer id, Model model) {
-		model.addAttribute("filiere", visiteRepo.findById(id));
+		model.addAttribute("visite", visiteRepo.findById(id).get());
 
 		model.addAttribute("patients", patientRepo.findAll());
 		model.addAttribute("medecins", medecinRepo.findAll());
