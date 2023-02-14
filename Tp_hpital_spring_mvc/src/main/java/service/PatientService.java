@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import exception.FormateurException;
+import exception.PatientException;
 import model.Patient;
 import repository.PatientRepository;
 
@@ -20,7 +20,7 @@ public class PatientService {
 	}
 
 	public Patient findById(Integer id) {
-		return patientRepo.findById(id).orElseThrow(FormateurException::new);
+		return patientRepo.findById(id).orElseThrow(PatientException::new);
 	}
 
 	public Patient update(Patient patient) {

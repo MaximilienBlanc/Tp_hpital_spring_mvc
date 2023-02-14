@@ -1,13 +1,13 @@
 package exception;
 
-public class FormateurException extends RuntimeException{
+public class PatientException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 	
-	public FormateurException() {
+	public PatientException() {
 		
 	}
 	
-	public FormateurException(String message) {
+	public PatientException(String message) {
 		super(message);
 	}
 }
