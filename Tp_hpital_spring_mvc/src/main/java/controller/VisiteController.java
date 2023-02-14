@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Visite;
+import repository.PatientRepository;
 import repository.VisiteRepository;
 
 
@@ -18,6 +20,12 @@ public class VisiteController {
 	
 	@Autowired
 	private VisiteRepository visiteRepo;
+	
+	@Autowired
+	private PatientRepository patientRepo;
+	
+	@Autowired
+	private MedecineRepository medecinRepo;
 	
 
 	@GetMapping("") // ETAPE 1 : RECEPTION DE LA REQUETE
@@ -31,23 +39,23 @@ public class VisiteController {
 		// ETAPE 4 : APPEL DE LA VIEW
 		return "visite/list";
 	}
-/*
+
 	@GetMapping("/add")
 	public String add(Model model) {
-		model.addAttribute("filiere", new Filiere());
-		model.addAttribute("formateurs", formateurService.findAll());
+		model.addAttribute("visite", new Visite());
+		model.addAttribute("patients", patientRepo.findAll());
+		model.addAttribute("medecins", medecinRepo.findAll());
 
 		return "filiere/form";
 	}
 
-	@GetMapping("/edit")
+	
+	@GetMapping("/form")
 	public String edit(@RequestParam Integer id, Model model) {
-		model.addAttribute("filiere", filiereService.findById(id));
-		model.addAttribute("formateurs", formateurService.findAll());
-
-		return "filiere/form";
+		model.addAttribute("filiere", visiteRepo.findById(id));
+		return "visite/form";
 	}
-
+/*
 	@PostMapping("")
 	public String save(@ModelAttribute("filiere") @Valid Filiere filiere, BindingResult result, @RequestParam(required = false) Integer idReferent) {
 		new FiliereValidator().validate(filiere, result);
