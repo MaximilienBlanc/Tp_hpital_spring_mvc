@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html>
+<!-- ETAPE 5 : EXECUTION DE LA VIEW (AVEC LES DONNEES DU MODEL) -->
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout.html">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Edition de la visite</title>
 </head>
 <body>
+	<section layout:fragment="monContenu">
+		<div class="container">
+			<div class="card mt-3">
+
+				<form th:action="@{/visite}" method="post">
+					<input type="hidden" name="version" th:value="${visite.version}" />
+					<div class="card-header bg-info text-white">
+						<h3>Edition de la visite</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<label for="id">Identifiant:</label> <input type="number"
+								class="form-control" name="id" readonly th:value="${visite.id}">
+							<span class="text-danger" th:errors="${visite.id}"></span>
+						</div>
+						<div class="form-group">
+							<label for="prix">Prix:</label> <input type="number"
+								class="form-control" name="prix"
+								th:value="${visite.prix}"> 
+							<span class="text-danger" th:errors="${visite.prix}"></span>
+						</div>
+						<div class="form-group">
+							<label for="salle">Salle:</label> <input type="text"
+								class="form-control" name="salle" th:value="${visite.salle}">
+							<span class="text-danger" th:errors="${visite.salle}"></span>
+						</div>
+						<div class="form-group">
+							<label for="date">Date:</label> <input type="date"
+								class="form-control" name="fin" th:value="${visite.date}">
+							<span class="text-danger" th:errors="${visite.date}"></span>
+						</div>
+						<div class="form-group">
+							<label for="idPatient">Patient:</label>
+							<select name="idpatient" class="form-control">
+								<option value="">Veuillez sélectionner un patient</option>
+								<option th:each="p : ${patients}"  th:value="${p.id}" th:selected="${p.id == visite.patient?.id}">[[${p.nom}]] [[${p.prenom}]]</option>
+							</select>
+							<span class="text-danger" th:errors="${visite.patient.id}"></span>
+						</div>
+						<div class="form-group">
+							<label for="idMedecin">Medecin:</label>
+							<select name="idMedecin" class="form-control">
+								<option value="">Veuillez sélectionner un medecin</option>
+								<option th:each="m : ${medecins}"  th:value="${m.id}" th:selected="${m.id == visite.medecin?.id}">[[${m.id}]] [[${m.login}]]</option>
+							</select>
+							<span class="text-danger" th:errors="${visite.medecint.id}"></span>
+						</div>
+					</div>
+			</div>
+			<div class="card-footer d-flex justify-content-end">
+				<div class="btn-group btn-group-lg ">
+					<button type="submit" class="btn btn-success">
+						<i class="bi bi-check-square"></i>
+					</button>
+					<a th:href="@{/medecin/cancel}" class="btn btn-warning"> <i
+						class="bi bi-backspace"></i>
+					</a>
+				</div>
+			</div>
+			</form>
+		</div>
+		</div>
+
+	</section>
 
 </body>
 </html>
