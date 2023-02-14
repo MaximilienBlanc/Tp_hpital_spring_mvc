@@ -9,10 +9,10 @@ import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.Test;
 
-import context.Medecin;
-import context.Patient;
-import context.Secretaire;
-import context.Visite;
+import model.Medecin;
+import model.Patient;
+import model.Secretaire;
+import model.Visite;
 
 public class HopitalTest {
 
