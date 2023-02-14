@@ -27,7 +27,7 @@ public class AppConfig {
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUsername("root");
 		dataSource.setPassword("");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/quest");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/hopital");
 		dataSource.setMaxTotal(10);
 		return dataSource;
 	}
