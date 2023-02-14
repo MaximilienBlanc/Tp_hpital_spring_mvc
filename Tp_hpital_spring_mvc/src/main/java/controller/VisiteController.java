@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import model.Visite;
+import repository.PatientRepository;
 import repository.VisiteRepository;
 
 
@@ -18,6 +19,12 @@ public class VisiteController {
 	
 	@Autowired
 	private VisiteRepository visiteRepo;
+	
+	@Autowired
+	private PatientRepository patientRepo;
+	
+	@Autowired
+	private MedecineRepository medecinRepo;
 	
 
 	@GetMapping("") // ETAPE 1 : RECEPTION DE LA REQUETE
@@ -31,15 +38,17 @@ public class VisiteController {
 		// ETAPE 4 : APPEL DE LA VIEW
 		return "visite/list";
 	}
-/*
+
 	@GetMapping("/add")
 	public String add(Model model) {
-		model.addAttribute("filiere", new Filiere());
-		model.addAttribute("formateurs", formateurService.findAll());
+		model.addAttribute("visite", new Visite());
+		model.addAttribute("patients", patientRepo.findAll());
+		model.addAttribute("medecins", medecinRepo.findAll());
 
 		return "filiere/form";
 	}
 
+	/*
 	@GetMapping("/edit")
 	public String edit(@RequestParam Integer id, Model model) {
 		model.addAttribute("filiere", filiereService.findById(id));
