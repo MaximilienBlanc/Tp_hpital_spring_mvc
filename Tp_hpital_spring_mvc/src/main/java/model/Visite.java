@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Visite {
 
@@ -23,6 +25,7 @@ public class Visite {
 	private double prix = 20;
 	private int salle;
 	@Column(name = "date_visite")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dateVisite;
 
 	@ManyToOne
