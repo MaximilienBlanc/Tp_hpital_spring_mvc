@@ -63,9 +63,9 @@ public class MedecinService {
 		checkConstraint(medecin);
 		Medecin medecinEnBase = findById(medecin.getId());
 
-		medecinEnBase.setLogin(medecin.setLogin());
-		medecinEnBase.setPassword(medecin.setPassword());
-		medecinEnBase.setSalle(medecin.setSalle());
+		medecinEnBase.setLogin(medecin.getLogin());
+		medecinEnBase.setPassword(medecin.getPassword());
+		medecinEnBase.setSalle(medecin.getSalle());
 		
 		
 		return medecinRepo.save(medecinEnBase);
