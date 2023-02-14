@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Visite;
 import repository.PatientRepository;
@@ -48,15 +49,13 @@ public class VisiteController {
 		return "filiere/form";
 	}
 
-	/*
-	@GetMapping("/edit")
+	
+	@GetMapping("/form")
 	public String edit(@RequestParam Integer id, Model model) {
-		model.addAttribute("filiere", filiereService.findById(id));
-		model.addAttribute("formateurs", formateurService.findAll());
-
-		return "filiere/form";
+		model.addAttribute("filiere", visiteRepo.findById(id));
+		return "visite/form";
 	}
-
+/*
 	@PostMapping("")
 	public String save(@ModelAttribute("filiere") @Valid Filiere filiere, BindingResult result, @RequestParam(required = false) Integer idReferent) {
 		new FiliereValidator().validate(filiere, result);
